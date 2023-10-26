@@ -16,7 +16,7 @@
 </p>
 
 <p align="center">
-  <img src="https://cs2browser.com/launcher/capture.png" alt="Screenshot">
+  <img src="https://cs2browser.com/launcher/launcher_capture.png" alt="Screenshot">
   <br />
 </p>
 
