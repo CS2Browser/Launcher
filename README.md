@@ -30,6 +30,7 @@
 - When the server changes the map, it will be downloaded automatically and you will join the server without having to do anything.
 - The launcher is automatically updated when a new version is released.
 - The system will check if any files on the gameserver have changed and will be overwritten on the player's local client.
+- Detects Steam and game directory automatically.
 
 ## TO-DO
 
