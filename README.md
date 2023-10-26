@@ -1,6 +1,6 @@
 <p align="center">
   <p align="center">
-  <img width="150" height="150" src="src/assets/images/icon.png" alt="Logo">
+  <a href="https://github.com/CS2Browser/Launcher/releases/latest"><img width="150" height="150" src="src/assets/images/icon.png" alt="Logo"></a> 
   </p>
   <h1 align="center"><b>CS2Browser Launcher</b></h1>
 	<p align="center">
