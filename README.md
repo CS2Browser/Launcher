@@ -35,7 +35,7 @@ Here are some features and improvements we're planning to add in the future:
 - [ ] Linux compatibility
 
 ## How to use
-1. Download the [latest version](https://github.com/CS2Browser/Launcher/releases/latest) of the launcher. **IMPORTANT: The code is not signed, so it is very likely that both the web browser and the operating system will tell you that it is not secure.**
+1. Download the [latest version](https://github.com/CS2Browser/Launcher/releases/latest) of the executable. **IMPORTANT: The code is not signed, so it is very likely that both the web browser and the operating system will tell you that it is not secure.**
 2. Select the server you want to play (double-click or click the PLAY button).
 3. Click on the Download Assets button to start downloading the content needed to play on the server.
 4. And finally, click on Join!
