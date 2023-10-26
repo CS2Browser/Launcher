@@ -1,0 +1,15 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    margin: auto;
+    background: rgb(52,56,65);
+    background: linear-gradient(135deg, rgba(52,56,65,1) 0%, rgba(37,40,46,1) 100%);
+    color: #fff;
+}
+
+.primaryButton {
+    background: rgb(71,189,254);
+    background: linear-gradient(90deg, rgba(71,189,254,1) 0%, rgba(48,129,224,1) 100%); 
+    border:0;
+    color: #fff;
+    border-radius: 2px;
+}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <div class="container-fluid">    
+        <div class="row" style="height: 95vh; overflow-y: auto; background-color: #23262e; padding:0px 5px 0px;">
+            <div class="col p-0">
+                <table id="serverList" class="table table-hover table-dark">
+                    <thead>
+                      <tr>
+                        <th scope="col">Servers</th>
+                        <th scope="col">Map</th>
+                        <th scope="col">Players</th>
+                      </tr>
+                    </thead>
+                    <tbody style="cursor: pointer">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- 
+        <div style="position: absolute; bottom: 0;">
+            <div class="row">
+                <div class="col text-right" style="background-color: #f0f0f0;">
+                    <p style="display: inline-block">Texto informativo aquí</p>
+                    <button class="btn btn-primary">JOIN</button>
+                </div>
+            </div>
+        </div>-->
+        <div style="height: 5vh;">
+            <div class="row">
+                <div class="d-flex justify-content-between align-items-center" style="background-color: #323539; position: absolute; bottom: 0; color: #fff">
+                    <span href="#" class="list-group-item flex-column align-items-start">
+                        <button id="refreshServerList" class="btn btn-secondary" type="button">
+                            <i id="refreshIcon" class="fas fa-rotate"></i>
+                        </button>
+                    </span>
+                    <div class="p-2">
+                        <button id="enterServerStatus" class="btn btn-primary primaryButton" disabled>
+                            Play
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

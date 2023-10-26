@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>BrowserMP Launcher > Server Info</title>
+</head>
+<body>
+    <div class="container" data-bs-theme="dark">
+        <div class="row pt-3">
+            <div class="col text-center">
+                Download assets & Play
+            </div>
+        </div>
+        <div class="row pt-3">
+            <div class="col">
+                <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="height: 5px">
+                    <div id="downloadFileProcessBar" class="progress-bar progress-bar-striped progress-bar-animated" style="width: 0%"></div>
+                </div>
+            </div>
+        </div>
+        <div class="row pt-1">
+            <div class="col">
+                <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+                    <div id="downloadProcessBar" class="progress-bar progress-bar-striped progress-bar-animated" style="width: 0%">0%</div>
+                </div>
+            </div>
+        </div>
+        <div class="row pt-3">
+            <div class="col">
+                <div class="form-floating">
+                    <textarea class="form-control" id="outputDownloadProcess" style="height: 180px; resize:none; font-size:12px" readonly> </textarea>
+                    <!--<label for="floatingTextarea">Output process</label>-->
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-end pt-3 pb-3">
+            <div class="col-6 align-self-end">
+                <div class="row">
+                    <div class="col">
+                        <button type="button" class="btn btn-secondary" id="downloadAssets">Download Assets</button>
+                    </div>
+                    <div class="col-3">
+                        <button type="button" class="btn btn-primary test" id="launchGame">Join</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,51 @@
+
+/* body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
+    Arial, sans-serif;
+  margin: auto;
+  max-width: 38rem;
+  padding: 2rem;
+} */
+
+.table tbody tr.highlight td {
+  background-color: #1f6091;
+}
+
+.table tbody tr.highlight td:hover {
+  background-color: #1f6091;
+}
+
+.infoServer {
+  list-style-type: none;
+  background-color: red;
+  width: 100%;
+  height: 100px;
+  padding:0;
+}
+
+.infoServer li {
+  display: inline-block;
+  margin:0px;
+  background-color: red;
+}
+
+.columnHostname {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 300px;
+}
+
+.columnMap {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 150px;
+}
+
+.columnPlayers {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100px;
+}
