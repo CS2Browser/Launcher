@@ -2,9 +2,9 @@
   <p align="center">
   <a href="https://github.com/CS2Browser/Launcher/releases/latest"><img width="150" height="150" src="src/assets/images/icon.ico" alt="Logo"></a> 
   </p>
-  <h1 align="center"><b>CS2Browser Launcher</b></h1>
+  <h1 align="center"><b>CS2Browser - Launcher</b></h1>
 	<p align="center">
-    CS2Browser Launcher is a tool designed to streamline the asset download process for CS2 (Counter-Strike 2) community gameservers.
+    CS2Browser - Launcher is a tool designed to streamline the asset download process for CS2 (Counter-Strike 2) community gameservers.
     <br />
     <br />
     <b>Download for </b>

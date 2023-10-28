@@ -1,8 +1,8 @@
 {
   "name": "CS2BrowserLauncher",
-  "productName": "CS2Browser Launcher",
-  "version": "0.2.1",
-  "description": "CS2Browser Launcher - Download manager and Launcher for CS2",
+  "productName": "CS2Browser - Launcher",
+  "version": "0.2.2",
+  "description": "CS2Browser - Launcher - Download manager and Launcher for CS2",
   "main": ".webpack/main",
   "scripts": {
     "start": "electron-forge start",
@@ -17,7 +17,7 @@
     "name": "CS2Browser.com",
     "email": "info@cs2browser.com"
   },
-  "license": "Apache-2.0",
+  "license": "GPL-3.0",
   "devDependencies": {
     "@electron-forge/cli": "^6.4.2",
     "@electron-forge/maker-deb": "^6.4.2",
@@ -63,7 +63,7 @@
   },
   "build": {
     "appId": "com.cs2browser.launcher",
-    "productName": "CS2Browser Launcher",
+    "productName": "CS2Browser - Launcher",
     "win": {
       "target": [
         "nsis"
