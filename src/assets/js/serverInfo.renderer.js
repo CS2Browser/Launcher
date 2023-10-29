@@ -86,6 +86,11 @@ function loadFastdlData(fastdlURL) {
             // Load files, every line is a file, exclude if line start with character different to letter
             const filesTXT = response.data.split('\n').filter(line => line.match(/^[a-zA-Z]/));
 
+            // Remove break lines and spaces
+            for (const fileTXT of filesTXT) {
+                filesTXT[filesTXT.indexOf(fileTXT)] = fileTXT.replace(/\r?\n|\r/g, '').trim();
+            }
+
             files = [];
             // Check if files field has the required fields
             for (const fileTXT of filesTXT) {
