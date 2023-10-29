@@ -45,3 +45,5 @@ Here are some features and improvements we're planning to add in the future:
 2. Select the server you want to play (double-click or click the PLAY button).
 3. Click on the Download Assets button to start downloading the content needed to play on the server.
 4. And finally, click on Join!
+
+## How to add a server: [GUIDE](https://github.com/CS2Browser/Launcher/wiki/How-to-add-a-server%3F)
