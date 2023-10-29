@@ -5,6 +5,12 @@
         "hostname": "[EU] .:MAPEADORES:. | ZOMBIE ESCAPE",
         "ip": "51.255.30.119:27015",
         "fastdl": "http://fastdl.mapeadores.com/cs2/"
+      },
+      {
+        "id": "74.91.119.34:27019",
+        "hostname": "[GFLClan.com] CS2 Zombie Escape Test Server",
+        "ip": "74.91.119.34:27019",
+        "fastdl": "https://fastdlv2.gflclan.com/file/gflfastdlv2/cs2/"
       }
     ]
   }
