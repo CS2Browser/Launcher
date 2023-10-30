@@ -29,6 +29,18 @@
         "hostname": "[EU] dsc.gg/auctoremcivitatis - Surf Freeroam #CS2",
         "ip": "13.49.240.25:30200",
         "fastdl": "http://fastdl.yetanotherdude.xyz/"
+      },
+      {
+        "id": "51.195.46.23:27021",
+        "hostname": "⬣ [FUNPLAY.pro] 1v1 Arenas [CS2]",
+        "ip": "51.195.46.23:27021",
+        "fastdl": "https://fastdl.funplay.pro/cs2/"
+      },
+      {
+        "id": "51.195.46.23:27018",
+        "hostname": "⬣ [FUNPLAY.pro] AWP - Sniper War [CS2]",
+        "ip": "51.195.46.23:27018",
+        "fastdl": "https://fastdl.funplay.pro/cs2/"
       }
     ]
   }
