@@ -11,6 +11,12 @@
         "hostname": "[GFLClan.com] CS2 Zombie Escape Test Server",
         "ip": "74.91.119.34:27019",
         "fastdl": "https://fastdlv2.gflclan.com/file/gflfastdlv2/cs2/"
+      },
+      {
+        "id": "64.74.163.82:27015",
+        "hostname": "Zombie Escape [LevHost.me] [Check Discord to play!]",
+        "ip": "64.74.163.82:27015",
+        "fastdl": "https://levhost.me/fastdl/cs2/"
       }
     ]
   }
