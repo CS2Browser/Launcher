@@ -29,6 +29,24 @@
         "hostname": "[EU] dsc.gg/auctoremcivitatis - Surf Freeroam #CS2",
         "ip": "13.49.240.25:30200",
         "fastdl": "http://fastdl.yetanotherdude.xyz/"
+      },
+      {
+        "id": "89.201.4.164:27015",
+        "hostname": "CHILL.LV - AWP Only",
+        "ip": "89.201.4.164:27015",
+        "fastdl": "https://ma.oof.lv/cs2/"
+      },
+      {
+        "id": "93.177.211.83:27015",
+        "hostname": "CHILL.LV - Public Comp",
+        "ip": "93.177.211.83:27015",
+        "fastdl": "https://ma.oof.lv/cs2/"
+      },
+        {
+        "id": "93.177.211.83:69",
+        "hostname": "CHILL.LV - Fun Mods",
+        "ip": "93.177.211.83:69",
+        "fastdl": "https://ma.oof.lv/cs2/"
       }
     ]
   }
