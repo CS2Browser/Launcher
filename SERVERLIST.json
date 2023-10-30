@@ -17,6 +17,18 @@
         "hostname": "Zombie Escape [LevHost.me] [Check Discord to play!]",
         "ip": "64.74.163.82:27015",
         "fastdl": "https://levhost.me/fastdl/cs2/"
+      },
+      {
+        "id": "13.49.240.25:30300",
+        "hostname": "[EU] dsc.gg/auctoremcivitatis - ZombieEscape BETA #CS2",
+        "ip": "13.49.240.25:30300",
+        "fastdl": "http://fastdl.yetanotherdude.xyz/"
+      },
+      {
+        "id": "13.49.240.25:30200",
+        "hostname": "[EU] dsc.gg/auctoremcivitatis - Surf Freeroam #CS2",
+        "ip": "13.49.240.25:30200",
+        "fastdl": "http://fastdl.yetanotherdude.xyz/"
       }
     ]
   }
