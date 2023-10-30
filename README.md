@@ -39,6 +39,7 @@ Here are some features and improvements we're planning to add in the future:
 - [ ] Load your local favorites
 - [ ] Download assets between maps (not only the maps as now)
 - [ ] Linux compatibility
+- [ ] Order list by players ingame
 
 ## How to use
 1. Download the [latest version](https://github.com/CS2Browser/Launcher/releases/latest) of the executable. **IMPORTANT: The code is not signed, so it is very likely that both the web browser and the operating system will tell you that it is not secure.**
