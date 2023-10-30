@@ -120,6 +120,7 @@ function CheckIfMapIsDownloaded(mapName) {
 window.serverInfoAPI.handleDownloadFile(async (event, value) => {
     /*
     * 0 = Download started
+    * 1 = File not found
     * 2 = Already downloaded
     * 3 = Download complete
     */
@@ -136,7 +137,8 @@ window.serverInfoAPI.handleDownloadFile(async (event, value) => {
         filesize = filesize + "KB";
     }
 
-    if (status > 1) {
+    // If file is already downloaded, download finished or file not found, we increment the countFiles
+    if (status > 0) {
         countFiles++;
         barProcess = Math.round((countFiles / totalFiles) * 100);
     }
@@ -146,6 +148,8 @@ window.serverInfoAPI.handleDownloadFile(async (event, value) => {
     log('info', filename + ' ' + status);
     if (status == 0) {
         setStatus(filename, `${filesize} downloading...`);
+    } else if (status == 1) {
+        setStatus(filename, "file not found");
     } else if (status == 2) {
         setStatus(filename, "already downloaded");
     } else if (status == 3) {

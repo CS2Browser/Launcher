@@ -314,6 +314,8 @@ async function downloadFile(fastdlURL, file) {
             log.info('item.cancel() was called');
         } else {
             log.error(error);
+            win.webContents.send('handleProgressDownloadFile', {url: url, filename: file, progress: 1.0});
+            win.webContents.send('handleDownloadFile', {status: 1, url: url, filename: file});
         }
     }
 
@@ -488,7 +490,7 @@ async function refreshAllServers() {
         // we get the status of the server
         queryServer(server.ip);
         // wait 1 seconds per server
-        await new Promise(r => setTimeout(r, 500));
+        await new Promise(r => setTimeout(r, 100));
     }
     mainWindow.webContents.send('handleRefreshServerListFinished', serverList);
 }

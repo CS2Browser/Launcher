@@ -1,7 +1,7 @@
 {
   "name": "CS2BrowserLauncher",
   "productName": "CS2Browser - Launcher",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "CS2Browser - Launcher - Download manager and Launcher for CS2",
   "main": ".webpack/main",
   "scripts": {
