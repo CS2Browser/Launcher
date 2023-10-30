@@ -29,6 +29,12 @@
         "hostname": "[EU] dsc.gg/auctoremcivitatis - Surf Freeroam #CS2",
         "ip": "13.49.240.25:30200",
         "fastdl": "http://fastdl.yetanotherdude.xyz/"
+      },
+      {
+        "id": "162.248.93.5:27015",
+        "hostname": "[USA] AWP ONLY - mygloveworks.com mango",
+        "ip": "162.248.93.5:27015",
+        "fastdl": "http://fastdl.mygloveworks.com/"
       }
     ]
   }
