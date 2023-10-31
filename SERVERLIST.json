@@ -47,6 +47,22 @@
         "hostname": "CS2 Kreedz KZ Movement Test - ded-community.de",
         "ip": "128.140.106.242:27017",
         "fastdl": "http://fastdl.cs2jail.de/"
+      },
+        "id": "162.248.93.5:27015",
+        "hostname": "[USA] AWP ONLY - mygloveworks.com mango",
+        "ip": "162.248.93.5:27015",
+        "fastdl": "https://fastdl.mygloveworks.com/cs2/"
+      },
+        "id": "51.195.46.23:27021",
+        "hostname": "⬣ [FUNPLAY.pro] 1v1 Arenas [CS2]",
+        "ip": "51.195.46.23:27021",
+        "fastdl": "https://fastdl.funplay.pro/cs2/"
+      },
+      {
+        "id": "51.195.46.23:27018",
+        "hostname": "⬣ [FUNPLAY.pro] AWP - Sniper War [CS2]",
+        "ip": "51.195.46.23:27018",
+        "fastdl": "https://fastdl.funplay.pro/cs2/"
       }
     ]
   }
