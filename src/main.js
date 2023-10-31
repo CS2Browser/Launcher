@@ -505,8 +505,8 @@ function queryServer(serverIP) {
     queryGameServerInfo(serverIP).then(infoResponse => {
         // send event to update server info on server list
         mainWindow.webContents.send('handleServerResponse', serverIP, infoResponse);
-        // send event to update server info on server info window if it's open
-        if (serverInfo != null) {
+        // send event to update server info on server info window if it's open and only if it's the same server
+        if (serverInfo != null && serverSelected != null && serverSelected == serverIP) {
             serverInfo.webContents.send('handleServerResponse', serverIP, infoResponse);
         }
     }).catch((err) => {
