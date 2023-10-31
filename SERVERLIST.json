@@ -29,6 +29,24 @@
         "hostname": "[EU] dsc.gg/auctoremcivitatis - Surf Freeroam #CS2",
         "ip": "13.49.240.25:30200",
         "fastdl": "http://fastdl.yetanotherdude.xyz/"
+      },
+      {
+        "id": "128.140.106.242:27015",
+        "hostname": "CS2 Warcraft 3 TFT Mod Test - ded-community.de",
+        "ip": "128.140.106.242:27015",
+        "fastdl": "http://fastdl.cs2jail.de/"
+      },
+      {
+        "id": "128.140.106.242:27016",
+        "hostname": "CS2 FFA HP & Ammo Refill - ded-community.de",
+        "ip": "128.140.106.242:27016",
+        "fastdl": "http://fastdl.cs2jail.de/"
+      },
+      {
+        "id": "128.140.106.242:27017",
+        "hostname": "CS2 Kreedz KZ Movement Test - ded-community.de",
+        "ip": "128.140.106.242:27017",
+        "fastdl": "http://fastdl.cs2jail.de/"
       }
     ]
   }
