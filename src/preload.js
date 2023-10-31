@@ -7,6 +7,7 @@ contextBridge.exposeInMainWorld('electronAPI', {
   openServerInfo: () => ipcRenderer.send('openServerInfo', []),
   handleServerList: (callback) => ipcRenderer.on('handleServerList', callback),
   selectServer: (id) => ipcRenderer.send('selectServer', id),
+  serverVisible: (serverID, visible) => ipcRenderer.send('serverVisible', serverID, visible),
   handleServerResponse: (callback) => ipcRenderer.on('handleServerResponse', callback),
   refreshServerList: () => ipcRenderer.send('refreshServerList', []),
   handleRefreshServerListFinished: (callback) => ipcRenderer.on('handleRefreshServerListFinished', callback),

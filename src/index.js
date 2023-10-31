@@ -6,6 +6,7 @@ $('.table').on('click', 'tbody tr', function(event) {
 });
 
 const enterServerStatusElem = document.getElementById('enterServerStatus');
+const serverListMain = document.getElementById('serverListMain');
 const serverListElem = document.getElementById('serverList');
 const refreshServerListElem = document.getElementById('refreshServerList');
 
@@ -84,4 +85,18 @@ refreshServerListElem.addEventListener('click', () => {
 
 window.electronAPI.handleRefreshServerListFinished((event, servers) => {
     $('#refreshIcon').removeClass('fa-spin');
+});
+
+serverListMain.addEventListener("scroll", (event) => {
+    // get the visible rows on table
+    serverListElem.querySelectorAll("tbody tr").forEach((row) => {
+        // get the row position
+        const rowPos = row.getBoundingClientRect();
+        // if the row is visible, add the class "visible"
+        if (rowPos.top >= 0 && rowPos.bottom <= serverListElem.offsetHeight) {
+            window.electronAPI.serverVisible(row.id, true);
+        } else {
+            window.electronAPI.serverVisible(row.id, false);
+        }
+    });
 });

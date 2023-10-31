@@ -181,6 +181,14 @@ const createWindow = () => {
         refreshAllServers();
     });
 
+    ipcMain.on('serverVisible', (event, serverID, visible) => {
+        serverList.forEach((server) => {
+            if (server.id == serverID) {
+                server.visible = visible;
+            }
+        });
+    });
+
     ipcMain.handle('log', (event, type, message) => {
         switch(type) {
             case 'info':
@@ -480,13 +488,18 @@ function initRefreshServers() {
             // we get the status of the server
             queryServer(server.ip);
             // wait 1 seconds per server
-            await new Promise(r => setTimeout(r, 1000));
+            await new Promise(r => setTimeout(r, 100));
         }
-    }, 5000);
+    }, 1000);
 }
 
 async function refreshAllServers() {
     for (const server of serverList) {
+        // if server is not visible, we don't refresh it
+        if (!server.visible) {
+            continue;
+        }
+
         // we get the status of the server
         queryServer(server.ip);
         // wait 1 seconds per server
@@ -510,7 +523,7 @@ function queryServer(serverIP) {
             serverInfo.webContents.send('handleServerResponse', serverIP, infoResponse);
         }
     }).catch((err) => {
-        console.error(err);
+        console.error(serverIP, err);
     });
 };
 

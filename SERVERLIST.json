@@ -1,70 +1,70 @@
 {
-    "servers": [
-      {
-        "id": "51.255.30.119:27015",
-        "hostname": "[EU] .:MAPEADORES:. | ZOMBIE ESCAPE",
-        "ip": "51.255.30.119:27015",
-        "fastdl": "http://fastdl.mapeadores.com/cs2/"
-      },
-      {
-        "id": "74.91.119.34:27019",
-        "hostname": "[GFLClan.com] CS2 Zombie Escape Test Server",
-        "ip": "74.91.119.34:27019",
-        "fastdl": "https://fastdlv2.gflclan.com/file/gflfastdlv2/cs2/"
-      },
-      {
-        "id": "64.74.163.82:27015",
-        "hostname": "Zombie Escape [LevHost.me] [Check Discord to play!]",
-        "ip": "64.74.163.82:27015",
-        "fastdl": "https://levhost.me/fastdl/cs2/"
-      },
-      {
-        "id": "13.49.240.25:30300",
-        "hostname": "[EU] dsc.gg/auctoremcivitatis - ZombieEscape BETA #CS2",
-        "ip": "13.49.240.25:30300",
-        "fastdl": "http://fastdl.yetanotherdude.xyz/"
-      },
-      {
-        "id": "13.49.240.25:30200",
-        "hostname": "[EU] dsc.gg/auctoremcivitatis - Surf Freeroam #CS2",
-        "ip": "13.49.240.25:30200",
-        "fastdl": "http://fastdl.yetanotherdude.xyz/"
-      },
-      {
-        "id": "128.140.106.242:27015",
-        "hostname": "CS2 Warcraft 3 TFT Mod Test - ded-community.de",
-        "ip": "128.140.106.242:27015",
-        "fastdl": "http://fastdl.cs2jail.de/"
-      },
-      {
-        "id": "128.140.106.242:27016",
-        "hostname": "CS2 FFA HP & Ammo Refill - ded-community.de",
-        "ip": "128.140.106.242:27016",
-        "fastdl": "http://fastdl.cs2jail.de/"
-      },
-      {
-        "id": "128.140.106.242:27017",
-        "hostname": "CS2 Kreedz KZ Movement Test - ded-community.de",
-        "ip": "128.140.106.242:27017",
-        "fastdl": "http://fastdl.cs2jail.de/"
-      },
-      {
-        "id": "162.248.93.5:27015",
-        "hostname": "[USA] AWP ONLY - mygloveworks.com mango",
-        "ip": "162.248.93.5:27015",
-        "fastdl": "https://fastdl.mygloveworks.com/cs2/"
-      },
-      {
-        "id": "51.195.46.23:27021",
-        "hostname": "⬣ [FUNPLAY.pro] 1v1 Arenas [CS2]",
-        "ip": "51.195.46.23:27021",
-        "fastdl": "https://fastdl.funplay.pro/cs2/"
-      },
-      {
-        "id": "51.195.46.23:27018",
-        "hostname": "⬣ [FUNPLAY.pro] AWP - Sniper War [CS2]",
-        "ip": "51.195.46.23:27018",
-        "fastdl": "https://fastdl.funplay.pro/cs2/"
-      }
-    ]
-  }
+  "servers": [
+    {
+      "id": "51.255.30.119:27015",
+      "hostname": "[EU] .:MAPEADORES:. | ZOMBIE ESCAPE",
+      "ip": "51.255.30.119:27015",
+      "fastdl": "http://fastdl.mapeadores.com/cs2/"
+    },
+    {
+      "id": "74.91.119.34:27019",
+      "hostname": "[GFLClan.com] CS2 Zombie Escape Test Server",
+      "ip": "74.91.119.34:27019",
+      "fastdl": "https://fastdlv2.gflclan.com/file/gflfastdlv2/cs2/"
+    },
+    {
+      "id": "64.74.163.82:27015",
+      "hostname": "Zombie Escape [LevHost.me] [Check Discord to play!]",
+      "ip": "64.74.163.82:27015",
+      "fastdl": "https://levhost.me/fastdl/cs2/"
+    },
+    {
+      "id": "13.49.240.25:30300",
+      "hostname": "[EU] dsc.gg/auctoremcivitatis - ZombieEscape BETA #CS2",
+      "ip": "13.49.240.25:30300",
+      "fastdl": "http://fastdl.yetanotherdude.xyz/"
+    },
+    {
+      "id": "13.49.240.25:30200",
+      "hostname": "[EU] dsc.gg/auctoremcivitatis - Surf Freeroam #CS2",
+      "ip": "13.49.240.25:30200",
+      "fastdl": "http://fastdl.yetanotherdude.xyz/"
+    },
+    {
+      "id": "128.140.106.242:27015",
+      "hostname": "CS2 Warcraft 3 TFT Mod Test - ded-community.de",
+      "ip": "128.140.106.242:27015",
+      "fastdl": "http://fastdl.cs2jail.de/"
+    },
+    {
+      "id": "128.140.106.242:27016",
+      "hostname": "CS2 FFA HP & Ammo Refill - ded-community.de",
+      "ip": "128.140.106.242:27016",
+      "fastdl": "http://fastdl.cs2jail.de/"
+    },
+    {
+      "id": "128.140.106.242:27017",
+      "hostname": "CS2 Kreedz KZ Movement Test - ded-community.de",
+      "ip": "128.140.106.242:27017",
+      "fastdl": "http://fastdl.cs2jail.de/"
+    },
+    {
+      "id": "162.248.93.5:27015",
+      "hostname": "[USA] AWP ONLY - mygloveworks.com mango",
+      "ip": "162.248.93.5:27015",
+      "fastdl": "https://fastdl.mygloveworks.com/cs2/"
+    },
+    {
+      "id": "51.195.46.23:27021",
+      "hostname": "⬣ [FUNPLAY.pro] 1v1 Arenas [CS2]",
+      "ip": "51.195.46.23:27021",
+      "fastdl": "https://fastdl.funplay.pro/cs2/"
+    },
+    {
+      "id": "51.195.46.23:27018",
+      "hostname": "⬣ [FUNPLAY.pro] AWP - Sniper War [CS2]",
+      "ip": "51.195.46.23:27018",
+      "fastdl": "https://fastdl.funplay.pro/cs2/"
+    }
+  ]
+}
