@@ -20,7 +20,7 @@
   <br />
 </p>
 
-> IMPORTANT: The code is not signed, so it is very likely that both the web browser and the operating system will tell you that it is not secure.
+> IMPORTANT: The code is **not signed**, so it is very likely that both the web browser and the operating system will tell you that it is not secure.
 
 ## Features
 
