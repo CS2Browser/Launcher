@@ -31,58 +31,52 @@
         "fastdl": "http://fastdl.yetanotherdude.xyz/"
       },
       {
-        "id": "89.201.4.164:27017",
+        "id": "89.201.4.164:27015",
         "hostname": "CHILL.LV - AWP Only",
-        "ip": "89.201.4.164:27017",
+        "ip": "89.201.4.164:27015",
         "fastdl": "https://ma.oof.lv/cs2/"
       },
       {
-        "id": "89.201.4.164:27015",
+        "id": "93.177.211.83:27015",
         "hostname": "CHILL.LV - Public Comp",
-        "ip": "89.201.4.164:27015",
-        "fastdl": "https://downloads.chill.lv/cs2/"
+        "ip": "93.177.211.83:27015",
+        "fastdl": "https://ma.oof.lv/cs2/"
       },
         {
-        "id": "89.201.4.164:6969",
-        "hostname": "CHILL.LV - ZM/ZE",
-        "ip": "89.201.4.164:6969",
-        "fastdl": "https://downloads.chill.lv/cs2/"
+        "id": "93.177.211.83:69",
+        "hostname": "CHILL.LV - Fun Mods",
+        "ip": "93.177.211.83:69",
+        "fastdl": "https://ma.oof.lv/cs2/"
       },
       {
-        "id": "89.201.4.164:27018",
-        "hostname": "CHILL.LV - Surf Timer",
-        "ip": "89.201.4.164:27018",
-        "fastdl": "https://downloads.chill.lv/cs2/"
+        "id": "93.177.211.83:27016",
+        "hostname": "CHILL.LV - Wingman Classic",
+        "ip": "93.177.211.83:27016",
+        "fastdl": "https://ma.oof.lv/cs2/"
       },
       {
-        "id": "89.201.4.164:27019",
-        "hostname": "CHILL.LV - KZ Climb",
-        "ip": "89.201.4.164:27019",
-        "fastdl": "https://downloads.chill.lv/cs2/"
+        "id": "93.177.211.83:27017",
+        "hostname": "CHILL.LV - Wingman Pistols Only",
+        "ip": "93.177.211.83:27017",
+        "fastdl": "https://ma.oof.lv/cs2/"
       },
       {
-        "id": "89.201.4.164:27023",
-        "hostname": "CHILL.LV - Bhop Timer",
-        "ip": "89.201.4.164:27023",
-        "fastdl": "https://downloads.chill.lv/cs2/"
+        "id": "93.177.211.83:27018",
+        "hostname": "CHILL.LV - Wingman AWP Only",
+        "ip": "93.177.211.83:27018",
+        "fastdl": "https://ma.oof.lv/cs2/"
       },
       {
-        "id": "89.201.4.164:27021",
-        "hostname": "CHILL.LV -  Retake #1",
-        "ip": "89.201.4.164:27021",
-        "fastdl": "https://downloads.chill.lv/cs2/"
-      },
-      {
-        "id": "89.201.4.164:27022",
-        "hostname": "CHILL.LV -  Retake #2",
-        "ip": "89.201.4.164:27022",
-        "fastdl": "https://downloads.chill.lv/cs2/"
+        "id": "93.177.211.83:27019",
+        "hostname": "CHILL.LV - Wingman Deagle Only",
+        "ip": "93.177.211.83:27019",
+        "fastdl": "https://ma.oof.lv/cs2/"
       },
       {
         "id": "89.201.4.164:27016",
-        "hostname": "CHILL.LV - Small Maps",
+        "hostname": "CHILL.LV - Aim Maps",
         "ip": "89.201.4.164:27016",
-        "fastdl": "https://downloads.chill.lv/cs2/"
+        "fastdl": "https://ma.oof.lv/cs2/"
       },
       {
         "id": "128.140.106.242:27015",
