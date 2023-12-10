@@ -125,6 +125,18 @@
         "hostname": "☣ ZOMBIE ESCAPE ☣.:[THE LAST OF US]-[RU/ENG]:.[SEX|SHOP]",
         "ip": "185.17.0.199:27015",
         "fastdl": "https://fastdl.tlou-project.ru/cs2/"
+      },
+      {
+        "id": "54.75.77.136:27015",
+        "hostname": "discord.gg/dope-fish - Dopefish Deathrun [WIP]",
+        "ip": "54.75.77.136:27015",
+        "fastdl": "https://fastdl2dr.dopefish.link/"
+      },
+      {
+        "id": "52.214.152.199:27015",
+        "hostname": "discord.gg/dope-fish - Dopefish Jailbreak [WIP]",
+        "ip": "52.214.152.199:27015",
+        "fastdl": "https://fastdl2jb.dopefish.link/"
       }
     ]
   }
