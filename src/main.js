@@ -552,8 +552,6 @@ function initRefreshServer(serverIP) {
 
 function queryServer(serverIP) {
     queryGameServerInfo(serverIP).then(infoResponse => {
-        // send event to update server info on server list
-        mainWindow.webContents.send('handleServerResponse', serverIP, infoResponse);
         let server = getServerById(serverIP);
         server.players = infoResponse.players;
         server.map = infoResponse.map;
