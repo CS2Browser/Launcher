@@ -19,6 +19,13 @@ let settingsWindow = null;
 
 let serverInfo = null;
 let serverList = [];
+let filteredList = [];
+let filterTypes = [
+    'hostname',
+    'map'
+];
+let filterListType = filterTypes[0];
+let filterListText = '';
 let serverListSorter = 'players';
 let sortDesc = true;
 let serverSelected = null;
@@ -188,6 +195,10 @@ const createWindow = () => {
         }
     );
 
+    ipcMain.on('filterServerList', (event, filterText, filterType) => {
+        filterServerList(filterText, filterType);
+    });
+
     ipcMain.on('serverVisible', (event, serverID, visible) => {
         serverList.forEach((server) => {
             if (server.id == serverID) {
@@ -267,7 +278,21 @@ function sortServerList() {
         serverList.sort((a, b) => isDescending * (b[serverListSorter] - a[serverListSorter]));
     }
     
+    if (filterListText != '') {
+        filterServerList(filterListText);
+        return;
+    }
+
     mainWindow.webContents.send('handleServerList', serverList, serverListSorter, sortDesc);
+}
+
+function filterServerList(filterText, filterType) {
+    filterListText = filterText;
+    filterListType = filterType;
+    filteredList = serverList.filter((server) => {
+        return server[filterTypes[filterListType]].toLowerCase().includes(filterText.toLowerCase());
+    });
+    mainWindow.webContents.send('handleServerList', filteredList, serverListSorter, sortDesc);
 }
 
 function launchGame(serverIP) {
@@ -553,7 +578,7 @@ function initRefreshServer(serverIP) {
 function queryServer(serverIP) {
     queryGameServerInfo(serverIP).then(infoResponse => {
         // send event to update server info on server list
-        mainWindow.webContents.send('handleServerResponse', serverIP, infoResponse);
+        //mainWindow.webContents.send('handleServerResponse', serverIP, infoResponse);
         let server = getServerById(serverIP);
         server.players = infoResponse.players;
         server.map = infoResponse.map;
