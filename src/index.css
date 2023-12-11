@@ -49,3 +49,7 @@
   text-overflow: ellipsis;
   max-width: 100px;
 }
+
+.clickable {
+  cursor: pointer;
+}

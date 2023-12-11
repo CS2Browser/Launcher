@@ -9,8 +9,17 @@ const enterServerStatusElem = document.getElementById('enterServerStatus');
 const serverListMain = document.getElementById('serverListMain');
 const serverListElem = document.getElementById('serverList');
 const refreshServerListElem = document.getElementById('refreshServerList');
+const serverListSortByServerElem = document.getElementById('serverListSortByServer');
+const serverListSortByMapElem = document.getElementById('serverListSortByMap');
+const serverListSortByPlayersElem = document.getElementById('serverListSortByPlayers');
+const chevronDown = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">\
+<path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>\
+</svg>';
+const chevronUp = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-up" viewBox="0 0 16 16">\
+<path fill-rule="evenodd" d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"/>\
+</svg>';
 
-window.electronAPI.handleServerList((event, servers) => {
+window.electronAPI.handleServerList((event, servers, serverListSorter, sortDesc) => {
     // populate table with json of servers
     const tbody = serverListElem.getElementsByTagName('tbody')[0];
     tbody.innerHTML = '';
@@ -23,13 +32,39 @@ window.electronAPI.handleServerList((event, servers) => {
         const mapCell = row.insertCell(1);
         const playersCell = row.insertCell(2);
         hostnameCell.innerText = server.hostname;
-        mapCell.innerText = '';
-        playersCell.innerText = 'loading...';
+        mapCell.innerText = server.map;
+        playersCell.innerText = server.players + '/' + server.maxPlayers;
         // add classes to cells
         hostnameCell.classList.add('columnHostname');
         mapCell.classList.add('columnMap');
         playersCell.classList.add('columnPlayers');
     });
+
+    //check serverListSorter
+    let headerElem;
+    switch (serverListSorter) {
+        case 'hostname':
+            headerElem = serverListSortByServerElem;
+            break;
+        case 'map':
+            headerElem = serverListSortByMapElem;
+            break;
+        case 'players':
+            headerElem = serverListSortByPlayersElem;
+            break;
+    }
+    if (!headerElem) {
+        return;
+    }
+
+    //find all .chevron
+    const chevrons = document.querySelectorAll('.chevron');
+    chevrons.forEach(chevron => {
+        chevron.innerHTML = '';//remove chevron
+    });
+    const chevron = headerElem.querySelector('.chevron');
+    //add chevron
+    chevron.innerHTML = sortDesc ? chevronDown : chevronUp;
 });
 
 window.electronAPI.handleServerResponse((event, serverIP, serverResponse) => {
@@ -81,6 +116,21 @@ function openServerInfo() {
 refreshServerListElem.addEventListener('click', () => {
     $('#refreshIcon').addClass('fa-spin');
     window.electronAPI.refreshServerList();
+});
+
+//handle when clicking on the sort by server button
+serverListSortByServerElem.addEventListener('click', () => {
+    window.electronAPI.changeServerListSorter('hostname');
+});
+
+//handle when clicking on the sort by map button
+serverListSortByMapElem.addEventListener('click', () => {
+    window.electronAPI.changeServerListSorter('map');
+});
+
+//handle when clicking on the sort by players button
+serverListSortByPlayersElem.addEventListener('click', () => {
+    window.electronAPI.changeServerListSorter('players');
 });
 
 window.electronAPI.handleRefreshServerListFinished((event, servers) => {
