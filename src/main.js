@@ -188,18 +188,6 @@ const createWindow = () => {
         }
     );
 
-    ipcMain.on('sortServerListByPlayers', (event) => {
-        serverList.sort((a, b) => b.players - a.players);
-        mainWindow.webContents.send('handleServerList', serverList);
-        }
-    );
-
-    ipcMain.on('sortServerListByMap', (event) => {
-        serverList.sort((a, b) => a.map.localeCompare(b.map));
-        mainWindow.webContents.send('handleServerList', serverList);
-        }
-    );
-
     ipcMain.on('serverVisible', (event, serverID, visible) => {
         serverList.forEach((server) => {
             if (server.id == serverID) {
