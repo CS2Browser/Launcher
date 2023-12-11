@@ -10,6 +10,7 @@ contextBridge.exposeInMainWorld('electronAPI', {
   serverVisible: (serverID, visible) => ipcRenderer.send('serverVisible', serverID, visible),
   handleServerResponse: (callback) => ipcRenderer.on('handleServerResponse', callback),
   refreshServerList: () => ipcRenderer.send('refreshServerList', []),
+  changeServerListSorter: (sortBy) => ipcRenderer.send('changeServerListSorter', sortBy),
   handleRefreshServerListFinished: (callback) => ipcRenderer.on('handleRefreshServerListFinished', callback),
   log: (type, message) => ipcRenderer.invoke('log', type, message),
 });
