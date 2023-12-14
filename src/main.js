@@ -19,6 +19,8 @@ let settingsWindow = null;
 
 let serverInfo = null;
 let serverList = [];
+let serverListSorter = 'players';
+let sortDesc = true;
 let serverSelected = null;
 let serverRefreshingEnabled = true;
 let timerRefreshServer = null;
@@ -181,6 +183,11 @@ const createWindow = () => {
         refreshAllServers();
     });
 
+    ipcMain.on('changeServerListSorter', (event, sortBy) => {
+        changeServerListSorter(sortBy);
+        }
+    );
+
     ipcMain.on('serverVisible', (event, serverID, visible) => {
         serverList.forEach((server) => {
             if (server.id == serverID) {
@@ -236,6 +243,32 @@ app.on('activate', () => {
         createWindow();
     }
 });
+
+function changeServerListSorter(sortBy) {
+    if (sortBy != serverListSorter) {
+        serverListSorter = sortBy;
+        if (sortBy == 'players') {
+            sortDesc = true;
+        } else {
+            sortDesc = false;
+        }
+    } else {
+        sortDesc = !sortDesc;
+    }
+    sortServerList();
+}
+
+function sortServerList() {
+    const isDescending = sortDesc ? 1 : -1;
+
+    if (serverListSorter !== 'players') {
+        serverList.sort((a, b) => isDescending * a[serverListSorter].localeCompare(b[serverListSorter]));
+    } else {
+        serverList.sort((a, b) => isDescending * (b[serverListSorter] - a[serverListSorter]));
+    }
+    
+    mainWindow.webContents.send('handleServerList', serverList, serverListSorter, sortDesc);
+}
 
 function launchGame(serverIP) {
     const execArguments = ['-gameidlaunch 730', '-insecure', '+connect ' + serverIP];
@@ -398,13 +431,16 @@ function addServers(servers) {
     for (const server of servers) {
         addServer(server);
     }
-    mainWindow.webContents.send('handleServerList', serverList);
+    mainWindow.webContents.send('handleServerList', serverList, serverListSorter, sortDesc);
 }
 
 function addServer(server) {
     if (serverList.includes(server)) {
         return;
     }
+    server.players = 0;
+    server.maxPlayers = 0;
+    server.map = 'N/A';
     serverList.push(server);
 }
 
@@ -505,7 +541,7 @@ async function refreshAllServers() {
         // wait 1 seconds per server
         await new Promise(r => setTimeout(r, 100));
     }
-    mainWindow.webContents.send('handleRefreshServerListFinished', serverList);
+    mainWindow.webContents.send('handleRefreshServerListFinished', serverList, serverListSorter, sortDesc);
 }
 
 function initRefreshServer(serverIP) {
@@ -516,8 +552,11 @@ function initRefreshServer(serverIP) {
 
 function queryServer(serverIP) {
     queryGameServerInfo(serverIP).then(infoResponse => {
-        // send event to update server info on server list
-        mainWindow.webContents.send('handleServerResponse', serverIP, infoResponse);
+        let server = getServerById(serverIP);
+        server.players = infoResponse.players;
+        server.map = infoResponse.map;
+        server.maxPlayers = infoResponse.maxPlayers;
+        sortServerList();
         // send event to update server info on server info window if it's open and only if it's the same server
         if (serverInfo != null && serverSelected != null && serverSelected == serverIP) {
             serverInfo.webContents.send('handleServerResponse', serverIP, infoResponse);
