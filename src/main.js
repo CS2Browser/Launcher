@@ -278,6 +278,7 @@ function sortServerList() {
         serverList.sort((a, b) => isDescending * (b[serverListSorter] - a[serverListSorter]));
     }
     
+
     if (filterListText != '') {
         filterServerList(filterListText);
         return;
@@ -292,7 +293,8 @@ function filterServerList(filterText, filterType) {
     filteredList = serverList.filter((server) => {
         return server[filterTypes[filterListType]].toLowerCase().includes(filterText.toLowerCase());
     });
-    mainWindow.webContents.send('handleServerList', filteredList, serverListSorter, sortDesc);
+    
+    mainWindow.webContents.send('handleServerList', serverList, serverListSorter, sortDesc);
 }
 
 function launchGame(serverIP) {
@@ -579,6 +581,7 @@ function queryServer(serverIP) {
     queryGameServerInfo(serverIP).then(infoResponse => {
         // send event to update server info on server list
         //mainWindow.webContents.send('handleServerResponse', serverIP, infoResponse);
+
         let server = getServerById(serverIP);
         server.players = infoResponse.players;
         server.map = infoResponse.map;
