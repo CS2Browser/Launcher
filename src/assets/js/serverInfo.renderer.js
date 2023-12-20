@@ -1,5 +1,6 @@
 import 'bootstrap';
 import './../../scss/app.scss';
+import './serverinfo.js'
 const axios = require('axios');
 
 // click button downloadAssets
@@ -14,6 +15,7 @@ const { allowedExtensions } = require('./../../utils/globals.js');
 const serverSelected = await window.serverInfoAPI.serverSelected();
 const steamExecutable = await window.serverInfoAPI.steamExecutable();
 const cs2Directory = await window.serverInfoAPI.cs2Directory();
+const autoDownloadAssets = await window.serverInfoAPI.autoDownloadAssets();
 
 let files = [];
 let countFiles = 1;
@@ -54,7 +56,7 @@ launchGameButton.addEventListener('click', async () => {
     log('info', 'gameIsAlreadyRunning: ' + gameIsAlreadyRunning);
 
     // if assets not checked, return
-    if (!assetsAlreadyChecked) {
+    if (!assetsAlreadyChecked && autoDownloadAssets) {
         log('info', 'Assets not checked');
         launchAssetsDownload();
         launchGameOnFinish = true;
@@ -65,7 +67,7 @@ launchGameButton.addEventListener('click', async () => {
             window.serverInfoAPI.connectToServer(serverSelected.ip);
         } else {
             log('info', 'Game is not running, launching game');
-            window.serverInfoAPI.launchGame(serverSelected.ip);
+            window.serverInfoAPI.launchGame(serverSelected.ip, serverSelected.appId);
         }
     }
 });
@@ -112,6 +114,9 @@ function loadFastdlData(fastdlURL) {
 }
 
 function CheckIfMapIsDownloaded(mapName) {
+    if (!autoDownloadAssets) {
+        return;
+    }
     const mapFile =  'maps/' + mapName + ".vpk";
     window.serverInfoAPI.downloadFile(serverSelected.fastdl, mapFile);
     mapsChecked.push(mapName);

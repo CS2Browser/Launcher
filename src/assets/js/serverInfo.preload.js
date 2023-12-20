@@ -5,7 +5,7 @@ contextBridge.exposeInMainWorld('serverInfoAPI', {
     serverSelected: () => ipcRenderer.invoke('serverSelected'),
     downloadFile: (fastdl, file) => ipcRenderer.invoke('downloadFile', fastdl, file),
     downloadFiles: (files) => ipcRenderer.invoke('downloadFiles', files),
-    launchGame: (serverIP) => ipcRenderer.invoke('launchGame', serverIP),
+    launchGame: (serverIP, appId) => ipcRenderer.invoke('launchGame', serverIP, appId),
     handleDownloadFile: (callback) => ipcRenderer.on('handleDownloadFile', callback),
     handleProgressDownloadFile: (callback) => ipcRenderer.on('handleProgressDownloadFile', callback),
     handleServerResponse: (callback) => ipcRenderer.on('handleServerResponse', callback),
@@ -14,4 +14,6 @@ contextBridge.exposeInMainWorld('serverInfoAPI', {
     log: (type, message) => ipcRenderer.invoke('log', type, message),
     steamExecutable: () => ipcRenderer.invoke('steamExecutable'),
     cs2Directory: () => ipcRenderer.invoke('cs2Directory'),
+    autoDownloadAssets: () => ipcRenderer.invoke('autoDownloadAssets'),
+    handleServerPlayerResponse: (callback) => ipcRenderer.on('handleServerPlayerResponse', callback),
 })
