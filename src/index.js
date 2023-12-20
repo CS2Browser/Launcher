@@ -12,6 +12,10 @@ const refreshServerListElem = document.getElementById('refreshServerList');
 const serverListSortByServerElem = document.getElementById('serverListSortByServer');
 const serverListSortByMapElem = document.getElementById('serverListSortByMap');
 const serverListSortByPlayersElem = document.getElementById('serverListSortByPlayers');
+
+const filterTextElem = document.getElementById('filterText');
+const filterTypeElem = document.getElementById('filterType');
+
 const chevronDown = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">\
 <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>\
 </svg>';
@@ -131,6 +135,15 @@ serverListSortByMapElem.addEventListener('click', () => {
 //handle when clicking on the sort by players button
 serverListSortByPlayersElem.addEventListener('click', () => {
     window.electronAPI.changeServerListSorter('players');
+});
+
+
+filterTextElem.addEventListener('input', () => {
+    window.electronAPI.filterServerList(filterTextElem.value, filterTypeElem.value);
+});
+
+filterTypeElem.addEventListener('change', () => {
+    window.electronAPI.filterServerList(filterTextElem.value, filterTypeElem.value);
 });
 
 window.electronAPI.handleRefreshServerListFinished((event, servers) => {
