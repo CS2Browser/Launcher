@@ -5,7 +5,6 @@ $('.table').on('click', 'tbody tr', function(event) {
     $(this).addClass('highlight').siblings().removeClass('highlight');
 });
 
-const enterServerStatusElem = document.getElementById('enterServerStatus');
 const serverListMain = document.getElementById('serverListMain');
 const serverListElem = document.getElementById('serverList');
 const refreshServerListElem = document.getElementById('refreshServerList');
@@ -118,7 +117,6 @@ var vueInstance = new Vue({
     },
     selectServer: function(event, server) {
         window.electronAPI.selectServer(server.id);
-        enterServerStatusElem.disabled = false;
         this.currentlySelectedServer = server;
     },
     doubleClickHandler: function(event, server) {
@@ -128,6 +126,9 @@ var vueInstance = new Vue({
     changeServerListSorter: function(sortBy) {
         this.serverListSorter = sortBy;
         window.electronAPI.changeServerListSorter(sortBy);
-    }
+    },
+    enterServerStatus: function(server) {
+        window.electronAPI.openServerInfo();
+    },
   }
 });

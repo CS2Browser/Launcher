@@ -14,5 +14,6 @@ contextBridge.exposeInMainWorld('serverInfoAPI', {
     log: (type, message) => ipcRenderer.invoke('log', type, message),
     steamExecutable: () => ipcRenderer.invoke('steamExecutable'),
     cs2Directory: () => ipcRenderer.invoke('cs2Directory'),
+    autoDownloadAssets: () => ipcRenderer.invoke('autoDownloadAssets'),
     handleServerPlayerResponse: (callback) => ipcRenderer.on('handleServerPlayerResponse', callback),
 })

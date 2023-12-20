@@ -3,7 +3,6 @@ window.serverInfoAPI.handleServerPlayerResponse((event, serverIP, playerList) =>
 });
 
 window.serverInfoAPI.handleServerResponse((event, serverIP, serverResponse) => {
-  console.log(serverResponse);
   vueInstance.server.map = serverResponse.map;
   vueInstance.server.players = serverResponse.players;
   vueInstance.server.maxPlayers = serverResponse.maxPlayers;

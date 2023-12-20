@@ -127,13 +127,18 @@ const createWindow = () => {
         } else {
             setServerListUrl(store.get('cs2ServerListUrl'));
         }
+
+        if (store.get('autoDownloadAssets') == null) {
+            store.set('autoDownloadAssets', true);
+        }
     }
 
     ipcMain.handle('steamExecutable', () => store.get('steamExecutable'));
     ipcMain.handle('cs2Directory', () => store.get('cs2Directory'));
     ipcMain.handle('cs2ServerListUrl', () => store.get('cs2ServerListUrl'));
+    ipcMain.handle('autoDownloadAssets', () => store.get('autoDownloadAssets'));
 
-    ipcMain.handle('saveSettings', (event, steamExecutable, cs2Directory, cs2ServerListUrl) => {
+    ipcMain.handle('saveSettings', (event, steamExecutable, cs2Directory, cs2ServerListUrl, autoDownloadAssets) => {
         let somethingWrong = false;
         if (!fs.existsSync(steamExecutable.replace(/\\/g, '\\\\'))) {
             log.error('Steam executable not found in: ' + steamExecutable);
@@ -151,6 +156,7 @@ const createWindow = () => {
         }
         if (!somethingWrong) {
             changeServerListUrl(cs2ServerListUrl);
+            store.set('autoDownloadAssets', autoDownloadAssets);
             settingsWindow.close();
             settingsWindow = null;
         }
@@ -442,7 +448,7 @@ function createSettingsWindow() {
     }
     settingsWindow = new BrowserWindow({
         width: 600,
-        height: 320,
+        height: 520,
         autoHideMenuBar: true,
         parent: mainWindow,
         fullscreenable: false,

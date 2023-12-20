@@ -56,7 +56,7 @@
                     </div>
                     
                     <div class="p-2">
-                        <button id="enterServerStatus" class="btn btn-primary primaryButton" disabled>
+                        <button id="enterServerStatus" class="btn btn-primary primaryButton" @click="enterServerStatus" :disabled="currentlySelectedServer == null">
                             Play
                         </button>
                     </div>
