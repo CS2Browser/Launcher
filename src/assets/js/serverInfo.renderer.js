@@ -1,5 +1,6 @@
 import 'bootstrap';
 import './../../scss/app.scss';
+import './serverinfo.js'
 const axios = require('axios');
 
 // click button downloadAssets
@@ -65,7 +66,7 @@ launchGameButton.addEventListener('click', async () => {
             window.serverInfoAPI.connectToServer(serverSelected.ip);
         } else {
             log('info', 'Game is not running, launching game');
-            window.serverInfoAPI.launchGame(serverSelected.ip);
+            window.serverInfoAPI.launchGame(serverSelected.ip, serverSelected.appId);
         }
     }
 });

@@ -3,45 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <title>CS2Browser - Launcher > Server Info</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <style>
+        .split-screen {
+            display: flex;
+        }
+        .split-screen .left {
+            flex: 1;
+            height: 100vh;
+            overflow-y: scroll;
+        }
+        .split-screen .right {
+            flex: 1;
+        }
+    </style>
 </head>
 <body>
-    <div class="container" data-bs-theme="dark">
-        <div class="row pt-3">
-            <div class="col text-center">
-                Download assets & Play
-            </div>
+    <div id="serverinfoapp" class="split-screen">
+        <div class="left">
+            {{server.map}} - {{server.players}}/{{server.maxPlayers}}
+            <table id="playerList" class="table table-hover table-dark sortable">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Score</th>
+                        <th>Time</th>
+                    </tr>
+                </thead>
+                <tbody v-if="!$isServer">
+                    <tr v-for="player in server.playerList">
+                        <td>{{player.name}}</td>
+                        <td>{{player.score}}</td>
+                        <td>{{formatDuration(player.duration)}}</td>
+                    </tr>
+                </tbody>
+                <tbody v-else>
+                    <tr>
+                        <td colspan="3">Loading...</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-        <div class="row pt-3">
-            <div class="col">
-                <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="height: 5px">
-                    <div id="downloadFileProcessBar" class="progress-bar progress-bar-striped progress-bar-animated" style="width: 0%"></div>
+        <div class="right">
+            <div class="container" data-bs-theme="dark">
+                <div class="row pt-3">
+                    <div class="col text-center">
+                        Download assets & Play
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div class="row pt-1">
-            <div class="col">
-                <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100">
-                    <div id="downloadProcessBar" class="progress-bar progress-bar-striped progress-bar-animated" style="width: 0%">0%</div>
-                </div>
-            </div>
-        </div>
-        <div class="row pt-3">
-            <div class="col">
-                <div class="form-floating">
-                    <textarea class="form-control" id="outputDownloadProcess" style="height: 180px; resize:none; font-size:12px" readonly> </textarea>
-                    <!--<label for="floatingTextarea">Output process</label>-->
-                </div>
-            </div>
-        </div>
-        <div class="row justify-content-end pt-3 pb-3">
-            <div class="col-6 align-self-end">
-                <div class="row">
+                <div class="row pt-3">
                     <div class="col">
-                        <button type="button" class="btn btn-secondary" id="downloadAssets">Download Assets</button>
+                        <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="height: 5px">
+                            <div id="downloadFileProcessBar" class="progress-bar progress-bar-striped progress-bar-animated" style="width: 0%"></div>
+                        </div>
                     </div>
-                    <div class="col-3">
-                        <button type="button" class="btn btn-primary test" id="launchGame">Join</button>
+                </div>
+                <div class="row pt-1">
+                    <div class="col">
+                        <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+                            <div id="downloadProcessBar" class="progress-bar progress-bar-striped progress-bar-animated" style="width: 0%">0%</div>
+                        </div>
                     </div>
+                </div>
+                <div class="row pt-3">
+                    <div class="col">
+                        <div class="form-floating">
+                            <textarea class="form-control" id="outputDownloadProcess" style="height: 180px; resize:none; font-size:12px" readonly> </textarea>
+                            <!--<label for="floatingTextarea">Output process</label>-->
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-end pt-3 pb-3">
+
+                        <div class="row">
+                            <div class="col">
+                                <button type="button" class="btn btn-secondary" id="downloadAssets">Download Assets</button>
+                            </div>
+                            <div class="col">
+                                <button type="button" class="btn btn-primary test" id="launchGame">Join</button>
+                            </div>
+                        </div>
+
                 </div>
             </div>
         </div>

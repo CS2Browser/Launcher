@@ -5,14 +5,18 @@ const Store = require('electron-store');
 const electronDl = require('electron-dl');
 const { download } = require('electron-dl');
 
+var appId = 730;
+//const appId = 10;
+
 const { mainMenu } = require('./menu/mainmenu');
 
 import { spawn } from 'child_process';
 import { getGamePath } from 'steam-game-path';
-import { queryGameServerInfo, queryGameServerRules } from 'steam-server-query';
+import { queryGameServerInfo, queryGameServerPlayer, queryGameServerRules } from 'steam-server-query';
 import { checkProcessIsRunning } from './utils/windows-cmd';
 
-import { fetchServers } from './utils/api';
+import { fetchServers, serverListUrl, setServerListUrl } from './utils/api';
+import { clear } from 'console';
 
 let mainWindow = null;
 let settingsWindow = null;
@@ -31,6 +35,7 @@ let sortDesc = true;
 let serverSelected = null;
 let serverRefreshingEnabled = true;
 let timerRefreshServer = null;
+let timerRefreshPlayers = null;
 
 const store = new Store();
 
@@ -87,7 +92,8 @@ const createWindow = () => {
     mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
 
     // Find steam directory and CS2 directory
-    const data = getGamePath(730);
+    //const data = getGamePath(730);
+    const data = getGamePath(appId);
 
     if (data) {
         // Save steam directory
@@ -114,12 +120,20 @@ const createWindow = () => {
                 store.set('cs2Directory', cs2Directory);
             }
         }
+
+
+        if (store.get('cs2ServerListUrl') == null) {
+            store.set('cs2ServerListUrl', serverListUrl);
+        } else {
+            setServerListUrl(store.get('cs2ServerListUrl'));
+        }
     }
 
     ipcMain.handle('steamExecutable', () => store.get('steamExecutable'));
     ipcMain.handle('cs2Directory', () => store.get('cs2Directory'));
+    ipcMain.handle('cs2ServerListUrl', () => store.get('cs2ServerListUrl'));
 
-    ipcMain.handle('saveSettings', (event, steamExecutable, cs2Directory) => {
+    ipcMain.handle('saveSettings', (event, steamExecutable, cs2Directory, cs2ServerListUrl) => {
         let somethingWrong = false;
         if (!fs.existsSync(steamExecutable.replace(/\\/g, '\\\\'))) {
             log.error('Steam executable not found in: ' + steamExecutable);
@@ -136,6 +150,7 @@ const createWindow = () => {
             store.set('cs2Directory', cs2Directory);
         }
         if (!somethingWrong) {
+            changeServerListUrl(cs2ServerListUrl);
             settingsWindow.close();
             settingsWindow = null;
         }
@@ -156,10 +171,10 @@ const createWindow = () => {
         loadServers(mainWindow);
     });
 
-    ipcMain.handle('launchGame', (event, serverIP) => {
+    ipcMain.handle('launchGame', (event, serverIP, appId) => {
         // const webContents = event.sender;
         // const win = BrowserWindow.fromWebContents(webContents)
-        launchGame(serverIP);
+        launchGame(serverIP, appId);
     });
 
     ipcMain.on('openServerInfo', (event, url) => {
@@ -255,6 +270,16 @@ app.on('activate', () => {
     }
 });
 
+function changeServerListUrl(url) {
+    setServerListUrl(url);
+    store.set('cs2ServerListUrl', url);
+    fetchServers().then((servers) => {
+        serverList = [];
+        addServers(servers);
+        initRefreshServers();
+    });
+}
+
 function changeServerListSorter(sortBy) {
     if (sortBy != serverListSorter) {
         serverListSorter = sortBy;
@@ -279,7 +304,7 @@ function sortServerList() {
     }
     
     if (filterListText != '') {
-        filterServerList(filterListText);
+        filterServerList(filterListText, filterListType);
         return;
     }
 
@@ -290,13 +315,13 @@ function filterServerList(filterText, filterType) {
     filterListText = filterText;
     filterListType = filterType;
     filteredList = serverList.filter((server) => {
-        return server[filterTypes[filterListType]].toLowerCase().includes(filterText.toLowerCase());
+        return server[filterListType].toLowerCase().includes(filterText.toLowerCase());
     });
     mainWindow.webContents.send('handleServerList', filteredList, serverListSorter, sortDesc);
 }
 
-function launchGame(serverIP) {
-    const execArguments = ['-gameidlaunch 730', '-insecure', '+connect ' + serverIP];
+function launchGame(serverIP, appId) {
+    const execArguments = ['-gameidlaunch '+appId, '-insecure', '+connect ' + serverIP];
     log.info('Launching game with params: ' + execArguments);
 
     let path = "";
@@ -417,7 +442,7 @@ function createSettingsWindow() {
     }
     settingsWindow = new BrowserWindow({
         width: 600,
-        height: 270,
+        height: 320,
         autoHideMenuBar: true,
         parent: mainWindow,
         fullscreenable: false,
@@ -466,6 +491,8 @@ function addServer(server) {
     server.players = 0;
     server.maxPlayers = 0;
     server.map = 'N/A';
+    server.appId = null;
+    server.playerList = [];
     serverList.push(server);
 }
 
@@ -491,6 +518,7 @@ function createServerInfoWindow() {
     serverRefreshingEnabled = false;
     // Start refreshing server info
     initRefreshServer(serverSelected);
+    initRefreshPlayers(serverSelected);
 
     serverInfo.loadURL(SERVER_INFO_WINDOW_WEBPACK_ENTRY);
 
@@ -519,6 +547,7 @@ function createServerInfoWindow() {
         serverRefreshingEnabled = true;
         // Stop refreshing server info
         clearInterval(timerRefreshServer);
+        clearInterval(timerRefreshPlayers);
         // Stop downloading files
         if(curDownloadItem) {
             curDownloadItem.cancel();
@@ -560,12 +589,19 @@ async function refreshAllServers() {
         if (!server.visible) {
             continue;
         }
-
+    
         // we get the status of the server
-        queryServer(server.ip);
-        // wait 1 seconds per server
-        await new Promise(r => setTimeout(r, 100));
+        queryServer(server.ip, true).catch(async (err) => {
+            let timeoutWaitTime = 1000;
+            if (err.message.includes("rate limited")) {
+                console.error(server.ip, err);
+                // wait before sending the next request
+                await new Promise(r => setTimeout(r, timeoutWaitTime));
+                resolve();
+            }
+        });
     }
+    
     mainWindow.webContents.send('handleRefreshServerListFinished', serverList, serverListSorter, sortDesc);
 }
 
@@ -575,23 +611,49 @@ function initRefreshServer(serverIP) {
     }, 5000);
 }
 
-function queryServer(serverIP) {
-    queryGameServerInfo(serverIP).then(infoResponse => {
-        // send event to update server info on server list
-        //mainWindow.webContents.send('handleServerResponse', serverIP, infoResponse);
+function initRefreshPlayers(serverIP) {
+    timerRefreshPlayers = setInterval(() => {
+        queryServerPlayers(serverIP)
+    }, 5000);
+}
+
+function queryServer(serverIP, promise = false) {
+    return new Promise((resolve, reject) => {
+        queryGameServerInfo(serverIP)
+            .then(infoResponse => {
+                let server = getServerById(serverIP);
+                server.players = infoResponse.players;
+                server.map = infoResponse.map;
+                server.maxPlayers = infoResponse.maxPlayers;
+                server.appId = infoResponse.appId;
+                sortServerList();
+
+                // send event to update server info on server info window if it's open and only if it's the same server
+                if (serverInfo != null && serverSelected != null && serverSelected == serverIP) {
+                    serverSelected = server;
+                    serverInfo.webContents.send('handleServerResponse', serverIP, infoResponse);
+                }
+                resolve(infoResponse); // Resolve the promise with the infoResponse
+            })
+            .catch((err) => {
+                if (promise) {
+                    reject(err); // Reject the promise with the error
+                }
+            });
+    });
+}
+
+function queryServerPlayers(serverIP) {
+    queryGameServerPlayer(serverIP).then(playerResponse => {
         let server = getServerById(serverIP);
-        server.players = infoResponse.players;
-        server.map = infoResponse.map;
-        server.maxPlayers = infoResponse.maxPlayers;
-        sortServerList();
-        // send event to update server info on server info window if it's open and only if it's the same server
-        if (serverInfo != null && serverSelected != null && serverSelected == serverIP) {
-            serverInfo.webContents.send('handleServerResponse', serverIP, infoResponse);
+        server.playerList = playerResponse;
+        if (serverInfo != null) {
+            serverInfo.webContents.send('handleServerPlayerResponse', serverIP, server.playerList);
         }
     }).catch((err) => {
-        console.error(serverIP, err);
+        console.error(err);
     });
-};
+}
 
 function isDev() {
     try {

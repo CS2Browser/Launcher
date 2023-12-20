@@ -2,20 +2,26 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
 </head>
 <body>
-    <div class="container-fluid">    
+    <div id="vueapp" class="container-fluid">    
         <div id="serverListMain" class="row" style="height: 95vh; overflow-y: auto; background-color: #23262e; padding:0px 5px 0px;">
             <div class="col p-0">
                 <table id="serverList" class="table table-hover table-dark sortable">
                     <thead>
                       <tr>
-                        <th scope="col" class="clickable" id="serverListSortByServer">Servers <span class="chevron"></div></th>
-                        <th scope="col" class="clickable" id="serverListSortByMap">Map <span class="chevron"></div></th>
-                        <th scope="col" class="clickable" id="serverListSortByPlayers">Players <span class="chevron"></div></th>
+                        <th scope="col" class="clickable" id="serverListSortByName" @click="changeServerListSorter('hostname')">Servers <span class="chevron"></div></th>
+                        <th scope="col" class="clickable" id="serverListSortByMap" @click="changeServerListSorter('map')">Map <span class="chevron"></div></th>
+                        <th scope="col" class="clickable" id="serverListSortByPlayers" @click="changeServerListSorter('players')">Players <span class="chevron"></div></th>
                       </tr>
                     </thead>
                     <tbody style="cursor: pointer">
+                        <tr v-for="server in serverListInfo" v-on:click="selectServer(event, server)" v-on:dblclick="doubleClickHandler(event, server)" v-bind:class="highlightOrNot(server)">
+                            <td>{{server.hostname}}</td>
+                            <td>{{server.map}}</td>
+                            <td>{{server.players}} / {{server.maxPlayers}}</td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -39,13 +45,13 @@
                     </span>
                     <div class="row">
                         <div class="col-md-6">
-                            <select id="filterType" class="form-control">
-                                <option value="0">Server name</option>
-                                <option value="1">Map name</option>
+                            <select id="filterType" v-model="filterType" class="form-control">
+                                <option value="hostname">Server name</option>
+                                <option value="map">Map name</option>
                             </select>
                         </div>
                         <div class="col-md-6">
-                            <input type="text" id="filterText" class="form-control" placeholder="Search text">
+                            <input type="text" id="filterText" v-model="filterText" class="form-control" placeholder="Search text">
                         </div>
                     </div>
                     
