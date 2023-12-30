@@ -143,7 +143,6 @@
         "hostname": "[SPAIN/EU] ★ CS2 ZOMBIE ESCAPE ★ cOLa-TeaM.es - discord.gg/AVfdYM65Z8",
         "ip": "141.94.98.165:27015",
         "fastdl": ""
-
       },
       {
         "id": "141.94.98.165:27020",
@@ -166,7 +165,8 @@
       {
         "id": "141.94.98.165:27035",
         "hostname": "[SPAIN/EU] ★ CS2 SURF TIMER ★ cOLa-TeaM.es - discord.gg/AVfdYM65Z8r",
-        "ip": "141.94.98.165:27035"
+        "ip": "141.94.98.165:27035",
+        "fastdl": ""
       },
       {
         "id": "141.94.98.165:27040",
