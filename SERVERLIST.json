@@ -14,9 +14,15 @@
       },
       {
         "id": "64.74.163.82:27015",
-        "hostname": "Zombie Escape [LevHost.me] [Check Discord to play!]",
+        "hostname": "Zombie Infection [LevHost.me]",
         "ip": "64.74.163.82:27015",
         "fastdl": "https://levhost.me/fastdl/cs2/"
+      },
+      {
+        "id": "64.74.163.84:27015",
+        "hostname": "Zombie Riot [LevHost.me]",
+        "ip": "64.74.163.82:27015",
+        "fastdl": ""
       },
       {
         "id": "13.49.240.25:30300",
